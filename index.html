@@ -152,9 +152,14 @@ a:hover {
 	to {border-right-color: transparent;}
 }
 
-
-
-
+.qrcode {
+  width: 50vh;
+  height: 30vh;
+  display: block;
+  background-image: url(https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/qrcode.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 
 
@@ -281,6 +286,9 @@ $(document).click(function(e) {
 </script><tw-passagedata pid="1" name="Title" tags="" position="500,500" size="100,100">&#39;&#39;Let’s Go On An Adventure!&#39;&#39;
 
 [[Start|Character Selection]]
+
+&lt;div class=&quot;qrcode&quot;&gt;&lt;/div&gt;
+
 &lt;&lt;set $HAS_PEN to false&gt;&gt;
 &lt;&lt;set $AGGRAVATE_MARK to false&gt;&gt;
 &lt;&lt;set $TOOK_QUEST to false&gt;&gt;
