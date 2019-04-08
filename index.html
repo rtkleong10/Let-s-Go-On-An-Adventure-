@@ -118,14 +118,15 @@ h2 {
 	font-weight: 700;
 }
 
-a:hover {
-	text-decoration: none;
+a {
+  font-weight: 700;
+    color: #9da6c9;
+
 }
 
-.next {
-	position: fixed;
-	bottom: 50px;
-	right: 50px;
+a:hover {
+	text-decoration: none;
+  color: #2C4AC5;
 }
 
 .passage {
@@ -155,15 +156,71 @@ a:hover {
 .qrcode {
   width: 50vh;
   height: 30vh;
-  display: block;
   background-image: url(https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/qrcode.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
 
+.qrcode.display {
+  display: block;
+}
 
+.box {
+  border-radius: 5px;
+  padding: 10px;
+  color: #FFFFFF;
+	font-weight: 700;
+}
 
+.box.display {
+  display: block;
+}
 
+.achievement {
+  background-color: #39A8C6;
+}
+
+.quest {
+  background-color: #C43E3E;
+}
+
+.reward {
+  background-color: #D2B019;
+}
+
+.sign {
+  font-family: fantasy;
+  color: #000000;
+  background-color: #E5E3B5;
+  text-align: center;
+  border-radius: 0;
+  padding: 20px;
+}
+
+.arrow {
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/arrow.png");
+  left: -50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arrow.display {
+    animation: shootAcross ease-in 500ms;
+}
+
+@keyframes shootAcross {
+	from {left: -50px;}
+	to {left: 100vw;}
+}
+
+@media (max-width: 650px) {
+  body {
+	font-size: 16px;
+  }
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">// require jQuery
 
 function addNodes(nodes, i = 0) {
@@ -283,16 +340,18 @@ $(document).click(function(e) {
 
 
 
+
+
 </script><tw-passagedata pid="1" name="Title" tags="" position="500,500" size="100,100">&#39;&#39;Let’s Go On An Adventure!&#39;&#39;
 
-[[Start|Character Selection]]
+[[Start|Class Selection]]
 
 &lt;div class=&quot;qrcode&quot;&gt;&lt;/div&gt;
 
 &lt;&lt;set $HAS_PEN to false&gt;&gt;
 &lt;&lt;set $AGGRAVATE_MARK to false&gt;&gt;
 &lt;&lt;set $TOOK_QUEST to false&gt;&gt;
-&lt;&lt;set $HELPED_SLIMES to false&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Character Selection" tags="" position="650,500" size="100,100">Greetings, young adventurer!
+&lt;&lt;set $HELPED_SLIMES to false&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Class Selection" tags="" position="650,500" size="100,100">Greetings, young adventurer!
 Please select a class.
 
 [[&gt; Warrior|Error][$weapon to &quot;axes&quot;]]
@@ -302,17 +361,16 @@ Please select a class.
 [[&gt; Peasant-&gt;Given Weapon]]</tw-passagedata><tw-passagedata pid="3" name="Error" tags="" position="800,400" size="100,100">&#39;&#39;Error!&#39;&#39;
 Wow, this is embarrassing. It looks like we&#39;ve run out of $weapon. Maybe you might want to pick something else?
 
-[[&gt; Back|Character Selection]]</tw-passagedata><tw-passagedata pid="4" name="Given Weapon" tags="" position="800,575" size="100,100">Welcome, young peasant! There’s a lot in store for you on this journey.
+[[&gt; Back|Class Selection]]</tw-passagedata><tw-passagedata pid="4" name="Given Weapon" tags="" position="800,575" size="100,100">Welcome, young peasant! There’s a lot in store for you on this journey.
 
 Here’s your weapon.
 
-[Achievement Unlocked: Obtain a weapon]
-
+&lt;div class=&quot;box achievement&quot;&gt;Achievement Unlocked: Obtain a weapon&lt;/div&gt;
 You look down at your palm to see a pen.
 
 [[&gt; “Wow, a pen! I can’t wait to um… write?”|Accept Pen]]
 [[&gt; “You call this a weapon?”|Refuse Pen]]
-</tw-passagedata><tw-passagedata pid="5" name="Accept Pen" tags="" position="950,500" size="100,100">Glad you like it! It’s a 0.5 black gel pen I bought for $0.50. [ANIMATION: CANCEL] I mean, this is a $5,000 fountain pen. Its chassis is made of refined glass and its ink was harvested from the finest veltish squids.
+</tw-passagedata><tw-passagedata pid="5" name="Accept Pen" tags="" position="950,500" size="100,100">Glad you like it! It’s a 0.5 black gel pen I bought for $0.50. I mean, this is a $5,000 fountain pen. Its chassis is made of refined glass and its ink was harvested from the finest veltish squids.
 
 [[&gt; “Cool!”|Ready]]
 &lt;&lt;set $HAS_PEN to true&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Refuse Pen" tags="" position="950,650" size="100,100">Rude, much? It’s the only thing we could get you on such short notice. If you hate it so much, then I’ll just have to take it back.
@@ -329,7 +387,7 @@ Are you ready to begin your journey?
 
 [[&gt; Start|Walking to City]]</tw-passagedata><tw-passagedata pid="9" name="Walking to City" tags="" position="1550,500" size="100,100">You start walking towards the gates of the city. As you admire the scenery, you wonder what fortunes await you.
 
-[ANIMATION: ARROW]
+&lt;div class=&quot;arrow&quot;&gt;&lt;/div&gt;
 
 Suddenly, an arrow whishes past you.
 
@@ -342,7 +400,7 @@ He and his fellow archers begin to laugh at you.
 
 You turn away and continue to walk towards the city.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Meet Old Lady]]&lt;/span&gt;
+[[&gt; Next|Meet Old Lady]]
 &lt;&lt;set $AGGRAVATE_MARK to false&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Shout at Bullies" tags="" position="1850,575" size="100,100">ARCHER MARK: “Sorry, what was that? I don’t speak peasant.”
 
 They break into another fit of laughter.
@@ -358,9 +416,7 @@ You look down to see a small old lady waving for your attention.
 OLD LADY: “Oh, thank goodness, you’re here. I need your help.”
 
 [[&gt; “Sure, what do you need help with?”|Accept Quest]]
-[[&gt; Ignore Her|Ignore Old Lady]]</tw-passagedata><tw-passagedata pid="14" name="Throw Pen at Bullies" tags="" position="2000,650" size="100,100">[ANIMATION: PEN THROW]
-
-In a fit of rage, you try to chuck your pen at them. But with your peasant strength, your pen falls barely a metre away from you.
+[[&gt; Ignore Her|Ignore Old Lady]]</tw-passagedata><tw-passagedata pid="14" name="Throw Pen at Bullies" tags="" position="2000,650" size="100,100">In a fit of rage, you try to chuck your pen at them. But with your peasant strength, your pen falls barely a metre away from you.
 
 You quickly pick up your pen and try to pretend that nothing happened.
 
@@ -370,7 +426,7 @@ They start to aim their weapons at you.
 
 You realise your doomed. So, you begin to run towards the city until you’re out of their range.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Meet Old Lady]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="15" name="Insult Bullies" tags="" position="2000,500" size="100,100">ARCHER MARK: “How dare you! Boys, grab your bows. We’ve got a new target.”
+[[&gt; Next|Meet Old Lady]]</tw-passagedata><tw-passagedata pid="15" name="Insult Bullies" tags="" position="2000,500" size="100,100">ARCHER MARK: “How dare you! Boys, grab your bows. We’ve got a new target.”
 
 They start to aim their weapons at you.
 
@@ -390,30 +446,28 @@ OLD LADY: “Wait! Don’t go! The village needs your hel-”
 
 You walk back out of the gates to continue on your journey.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Haunted Forest]]&lt;/span&gt;
+[[&gt; Next|Haunted Forest]]
 &lt;&lt;set $TOOK_QUEST to false&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Help Old Lady 1" tags="" position="2600,350" size="100,100">OLD LADY: “Oh, that’s so very kind of you, young adventurer. The haunted forest is just outside of the village. I need you to kill 20 ghosts.”
 
 [[&gt; “Why 20?”|Help Old Lady 2]]</tw-passagedata><tw-passagedata pid="19" name="Insult Old Lady" tags="" position="2600,525" size="100,100">OLD LADY: “Excuse me! I’ll have you know that I’m a level 100 mage, asshole. I’m just here to provide quests for new adventurers.”
 
 She starts casting jinxes at you. So, you run out of the city.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Haunted Forest]]&lt;/span&gt;
+[[&gt; Next|Haunted Forest]]
 &lt;&lt;set $TOOK_QUEST to false&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Help Old Lady 2" tags="" position="2750,350" size="100,100">OLD LADY:	“It’s a nice number.”
 
-[Quest: 0/20 ghosts killed]
-
+&lt;div class=&quot;box quest&quot;&gt;Quest: 0/20 ghosts killed&lt;/div&gt;
 She wishes you good luck as you leave the city.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Haunted Forest]]&lt;/span&gt;
+[[&gt; Next|Haunted Forest]]
 &lt;&lt;set $TOOK_QUEST = true&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Haunted Forest" tags="" position="3050,500" size="100,100">You exit the city from a different gate.
 
 The path is much darker and harder to follow. The tree branches overlap, blocking out the sun.
 
 But there’s one spot where the light manages to shine through. It illuminates a sign that writes:
 
-HAUNTED FOREST
-ADVENTURERS BEWARE
-
+&lt;div class=&quot;box sign&quot;&gt;HAUNTED FOREST
+ADVENTURERS BEWARE&lt;/div&gt;
 You begin to hear branches crack in the distance.
 
 &lt;&lt;if $TOOK_QUEST&gt;&gt;[[&gt; “Well, that was easy.”|Meet Slimes]]
@@ -429,40 +483,34 @@ SLIME: “Ouch! What was that for?”
 
 You punch the slime one more time. It dies and drops EXP.
 
-[Achievement Unlocked: Committed Murder]
-&lt;&lt;if $TOOK_QUEST&gt;&gt;
-[Quest: 1/20 slimes killed]
-&lt;&lt;/if&gt;&gt;
-&lt;span class=&quot;next&quot;&gt;[[Next|Attack Slimes 2]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="24" name="Ignore Slimes" tags="" position="3350,650" size="100,100">You run as fast as you can to get away from the slime.
+&lt;div class=&quot;box achievement&quot;&gt;Achievement Unlocked: Committed Murder&lt;/div&gt;
+[[&gt; Next|Attack Slimes 2]]</tw-passagedata><tw-passagedata pid="24" name="Ignore Slimes" tags="" position="3350,650" size="100,100">You run as fast as you can to get away from the slime.
 
 SLIME:	“Wait, come back! You’re in great danger!”
 
 The slime calls for you, but you only run faster.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Wander Off to the City]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="25" name="Listen 1" tags="" position="3350,500" size="100,100">SLIME: “We’ve been cursed. We were once adventurers just like you. But when we tried to help the old lady, she cursed us and turned us into slimes. Please, young adventurer, we need your help to undo her curse.”
+[[&gt; Next|Wander Off to the City]]</tw-passagedata><tw-passagedata pid="25" name="Listen 1" tags="" position="3350,500" size="100,100">SLIME: “We’ve been cursed. We were once adventurers just like you. But when we tried to help the old lady, she cursed us and turned us into slimes. Please, young adventurer, we need your help to undo her curse.”
 
 [[&gt; “I’ll help you.”|Listen 2]]
 [[&gt; “Well, that’s a you problem.”|Ignore Slimes]]</tw-passagedata><tw-passagedata pid="26" name="Attack Slimes 2" tags="" position="3500,350" size="100,100">From behind the trees, more slimes hop into sight. They look horrified at the sight of their fellow slime reduced to goo on the forest floor.
 
 You wipe the goo off your fists and run to attack the rest of the slimes.
 
-[Achievement Unlocked: Genocide]
-&lt;&lt;if $TOOK_QUEST&gt;&gt;
-[Quest Complete: 20/20 slimes killed]
-&lt;&lt;/if&gt;&gt;
+&lt;div class=&quot;box achievement&quot;&gt;Achievement Unlocked: Genocide&lt;/div&gt;
+&lt;&lt;if $TOOK_QUEST&gt;&gt;&lt;div class=&quot;box quest&quot;&gt;Quest Complete: 20/20 slimes killed&lt;/div&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $TOOK_QUEST&gt;&gt;[[&gt; Return to the city|Complete Quest 1]]
-&lt;&lt;else&gt;&gt;&lt;span class=&quot;next&quot;&gt;[[Next|Wander Off to the City]]&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;[[&gt; Next|Wander Off to the City]]&lt;&lt;/if&gt;&gt;
 &lt;&lt;set $HELPED_SLIMES to false&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Complete Quest 1" tags="" position="3650,275" size="100,100">OLD LADY:	“Wow, good job for a peasant.”
 
-Reward: Apple
-
-[[&gt; “That’s it?”|Complete Quest 2]]</tw-passagedata><tw-passagedata pid="28" name="Complete Quest 2" tags="" position="3800,275" size="100,100">OLD LADY: &quot;Hey, apples are yummy and good for your health! Youngsters nowadays…”
+&lt;div class=&quot;box reward&quot;&gt;Reward: Apple&lt;/div&gt;
+[[&gt; “That’s it?”|Complete Quest 2]]</tw-passagedata><tw-passagedata pid="28" name="Complete Quest 2" tags="" position="3800,275" size="100,100">OLD LADY: &quot;Hey, apples are delicious and good for your health! Youngsters nowadays…”
 
 The old lady mutters under her breath.
 
 You turn away for a second, but when you look back she has disappeared.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Come Back]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="29" name="Come Back" tags="" position="4100,500" size="100,100">Bewildered, you start to wander around the city. You begin to notice a burning smell coming from one of the houses.
+[[&gt; Next|Come Back]]</tw-passagedata><tw-passagedata pid="29" name="Come Back" tags="" position="4100,500" size="100,100">Bewildered, you start to wander around the city. You begin to notice a burning smell coming from one of the houses.
 
 You find yourself compelled to follow its trail. As you move closer and closer, you begin to hear voices.
 
@@ -472,12 +520,12 @@ You quicken your pace. You end up in front of a small cottage in the centre of t
 
 [[&gt; “Hello? Are you all right?”|Open the Door]]</tw-passagedata><tw-passagedata pid="30" name="Wander Off to the City" tags="" position="3500,650" size="100,100">Somehow, you end up back in the city.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Come Back]]&lt;/span&gt;
+[[&gt; Next|Come Back]]
 &lt;&lt;set $HELPED_SLIMES to false&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Listen 2" tags="" position="3500,500" size="100,100">SLIME: “Thank you. But be warned, she has ears throughout the kingdom. I’m afraid she might even be listening as we spea-”
 
 Suddenly, the slime disappears and you find yourself back in the city.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Come Back]]&lt;/span&gt;
+[[&gt; Next|Come Back]]
 &lt;&lt;set $HELPED_SLIMES to true&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Open the Door" tags="" position="4250,500" size="100,100">The door creaks open. The old lady pops her head out of the window.
 
 OLD LADY: “Ah, young adventurer. Care to join us?”
@@ -487,13 +535,13 @@ She opens the door further to reveal ARCHER MARK hanging over a steaming cauldro
 You try to run, but your body is paralysed.
 
 &lt;&lt;if $HELPED_SLIMES&gt;&gt;[[&gt; Next|Saved by Slimes 1]]
-&lt;&lt;else&gt;&gt;&lt;span class=&quot;next&quot;&gt;[[Next|ARCHER MARK Dies]]&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Saved by Slimes 1" tags="" position="4400,425" size="100,100">She waves her wand, compelling your body to walk towards the cauldron. You close your eyes and begin to brace yourself for the worst.
+&lt;&lt;else&gt;&gt;[[&gt; Next|ARCHER MARK Dies]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Saved by Slimes 1" tags="" position="4400,425" size="100,100">She waves her wand, compelling your body to walk towards the cauldron. You close your eyes and begin to brace yourself for the worst.
 
 All of sudden, the door slams down. The witch’s spell weakens for a moment for you to turn around.
 
 It’s the slimes. They’ve come to save you.
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Saved by Slimes 2]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="34" name="ARCHER MARK Dies" tags="" position="4400,575" size="100,100">She mutters an incantation. The string suspending the ARCHER MARK snaps.
+[[&gt; Next|Saved by Slimes 2]]</tw-passagedata><tw-passagedata pid="34" name="ARCHER MARK Dies" tags="" position="4400,575" size="100,100">She mutters an incantation. The string suspending the ARCHER MARK snaps.
 
 He falls into the cauldron. After a few seconds, a slime hops out of the cauldron and out the door.
 
@@ -501,7 +549,7 @@ The witch smiles, satisfied. She turns to you.
 
 OLD LADY: “Hmm, I didn’t mean to turn you so soon. But I guess it can’t be helped.”
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Die in the Cauldron]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="Saved by Slimes 2" tags="" position="4550,425" size="100,100">The slimes start to knock down the witch’s equipment. Some of them hop over to save ARCHER MARK.
+[[&gt; Next|Die in the Cauldron]]</tw-passagedata><tw-passagedata pid="35" name="Saved by Slimes 2" tags="" position="4550,425" size="100,100">The slimes start to knock down the witch’s equipment. Some of them hop over to save ARCHER MARK.
 
 The witch turns around. She screams as she casts hexes frantically at the slimes.
 
@@ -515,11 +563,11 @@ She falls to the ground.
 You turn to see ARCHER MARK back on the ground after being freed by the slimes.
 
 &lt;&lt;if $AGGRAVATE_MARK&gt;&gt;[[&gt; Next|Killed by Mark]]
-&lt;&lt;else&gt;&gt;&lt;span class=&quot;next&quot;&gt;[[Next|Befriend Mark]]&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="Punch the Witch" tags="" position="4700,500" size="100,100">You try to punch the witch. But your peasant punches are no match for the witch. She doesn’t even flinch.
+&lt;&lt;else&gt;&gt;[[&gt; Next|Befriend Mark]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="Punch the Witch" tags="" position="4700,500" size="100,100">You try to punch the witch. But your peasant punches are no match for the witch. She doesn’t even flinch.
 
 She casts a freezing spell at everyone in the room. She begins to turn to you with a wry smile on her lips
 
-&lt;span class=&quot;next&quot;&gt;[[Next|Die in the Cauldron]]&lt;/span&gt;</tw-passagedata><tw-passagedata pid="38" name="Die in the Cauldron" tags="" position="4550,575" size="100,100">She lifts you up with a spell and drops you into the cauldron. You feel your body slowly morph into a slime.
+[[&gt; Next|Die in the Cauldron]]</tw-passagedata><tw-passagedata pid="38" name="Die in the Cauldron" tags="" position="4550,575" size="100,100">She lifts you up with a spell and drops you into the cauldron. You feel your body slowly morph into a slime.
 
 You wait for her to let you out, but she doesn’t.
 
@@ -546,7 +594,25 @@ Sorry, I didn’t prepare a prize or anything. But here have an imaginary cookie
 Well, you can always try again.
 
 [[&gt; Try again|Title]]
-&lt;&lt;link &quot;&gt; Exit&quot;&gt;&gt;&lt;&lt;script&gt;&gt;window.close()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="&gt; " tags="" position="3390,500" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata></div>
+&lt;&lt;link &quot;&gt; Exit&quot;&gt;&gt;&lt;&lt;script&gt;&gt;window.close()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="Notes" tags="" position="300,500" size="100,100"># Presentation
+- 1 round majority vote
+- 1 round majority diff route
+- Go through interesting paths, not gone through
+- General concept behind the piece
+
+# Print
+- Blank sheets
+- Full map
+- Script
+- Email website
+
+# Suggestions
+- Limited tries for character select
+- Diff error text for diff class select
+- Die if anger witch
+- Make narrator more annoying (how rude when you ignore old lady)
+- Slime death more emotional (why you kill my brother, choose to attack or stop but can only attack cuz in auto-attack mode)
+- Feel more guilt</tw-passagedata></tw-storydata></div>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(/^(?:(?:uncaught\s+(?:exception:\s+)?)?error:\s+)+/i,"")+".":": unknown error."),"object"===("undefined"==typeof n?"undefined":_typeof(n))&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}();!function(){function e(e,t){var a=String(e);switch(t){case"start":return a&&r.test(a)?a.replace(r,""):a;case"end":return a&&n.test(a)?a.replace(n,""):a;default:throw new Error('_trimFrom called with incorrect where parameter value: "'+t+'"')}}function t(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n="undefined"==typeof t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var r=/^[\s\u00A0\uFEFF][\s\u00A0\uFEFF]*/,n=/[\s\u00A0\uFEFF][\s\u00A0\uFEFF]*$/;Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(t===n||t!==t&&n!==n)return!0}return!1}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(e,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(e,10);return i<=a?n:t(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(e,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(e,10);return i<=a?n:n+t(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return e(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return e(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return e(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return e(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r,r<0&&(r=0)),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n,n<0&&(n=e-1)),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if(null==e||"object"!==("undefined"==typeof e?"undefined":_typeof(e))||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){var r=0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1));return e[r]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function e(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var t=Array.from(this);if(0===arguments.length)return t;var r=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),n=r.length;if(0===n)return t;for(var a=Array.prototype.indexOf,i=Array.prototype.push,o=0;o<n;++o){var e=r[o];a.call(t,e)===-1&&i.call(t,e)}return t}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;(r=e.call(this,t,r))!==-1;)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=Array.prototype.splice,a=Array.prototype.concat.apply([],arguments),i=[],o=0,s=a.length;o<s;++o)for(var u=a[o],l=0;(l=t.call(this,u,l))!==-1;)r.apply(i,n.call(this,l,1));return i}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.reduce.call(this,function(e,t){return e.concat(Array.isArray(t)?t.flatten():t)},[])}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do a.push(n.call(this,_random(0,i--),1)[0]);while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function e(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var t=arguments.length;if(0===t)return this.length>>>0;for(var r=Array.prototype.indexOf,n=Array.prototype.push,a=0;a<t;++a){var e=arguments[a];r.call(this,e)===-1&&n.call(this,e)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return this[t]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do o=_random(0,i);while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function e(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var t=arguments.length;if(0===t)return this.length>>>0;for(var r=Array.prototype.indexOf,n=Array.prototype.unshift,a=0;a<t;++a){var e=arguments[a];r.call(this,e)===-1&&n.call(this,e)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function e(t,r,n){var e=Number(t);return Number.isNaN(e)?NaN:e.clamp(r,n)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||!function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch("undefined"==typeof i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return String.prototype.indexOf.apply(this,arguments)!==-1}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;(n=t.call(this,e,n))!==-1;)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n,a<0&&(a=0)):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return"undefined"!=typeof r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return n===-1?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return n===-1?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Windows:t||e.includes("iemobile"),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null;return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&!Browser.isMobile.any()&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),r=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),n=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),a=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}();return Object.freeze({audio:e,fileAPI:t,geolocation:r,mutationObserver:n,performance:a})}(),_ref3=function(){function e(t){if("object"!==("undefined"==typeof t?"undefined":_typeof(t))||null==t)return t;if("function"==typeof t.clone)return t.clone(!0);if(t.nodeType&&"function"==typeof t.cloneNode)return t.cloneNode(!0);var r=void 0;return Array.isArray(t)?r=[]:t instanceof Date?r=new Date(t.getTime()):t instanceof Map?(r=new Map,t.forEach(function(t,n){r.set(n,e(t))})):t instanceof RegExp?r=new RegExp(t):t instanceof Set?(r=new Set,t.forEach(function(t){r.add(e(t))})):r=Object.create(Object.getPrototypeOf(t)),Object.keys(t).forEach(function(n){return r[n]=e(t[n])}),r}function t(e){for(var t=document.createDocumentFragment(),r=document.createElement("p"),n=void 0;null!==(n=e.firstChild);){if(n.nodeType===Node.ELEMENT_NODE){var a=n.nodeName.toUpperCase();switch(a){case"BR":if(null!==n.nextSibling&&n.nextSibling.nodeType===Node.ELEMENT_NODE&&"BR"===n.nextSibling.nodeName.toUpperCase()){e.removeChild(n.nextSibling),e.removeChild(n),t.appendChild(r),r=document.createElement("p");continue}if(!r.hasChildNodes()){e.removeChild(n);continue}break;case"ADDRESS":case"ARTICLE":case"ASIDE":case"BLOCKQUOTE":case"CENTER":case"DIV":case"DL":case"FIGURE":case"FOOTER":case"FORM":case"H1":case"H2":case"H3":case"H4":case"H5":case"H6":case"HEADER":case"HR":case"MAIN":case"NAV":case"OL":case"P":case"PRE":case"SECTION":case"TABLE":case"UL":r.hasChildNodes()&&(t.appendChild(r),r=document.createElement("p")),t.appendChild(n);continue}}r.appendChild(n)}r.hasChildNodes()&&t.appendChild(r),e.appendChild(t)}function r(){try{return document.activeElement||null}catch(e){return null}}function n(e,t,r){var n="object"===("undefined"==typeof e?"undefined":_typeof(e))?e:document.getElementById(e);if(null==n)return null;var a=Array.isArray(t)?t:[t];jQuery(n).empty();for(var i=0,o=a.length;i<o;++i)if(Story.has(a[i]))return new Wikifier(n,Story.get(a[i]).processText().trim()),n;if(null!=r){var s=String(r).trim();""!==s&&new Wikifier(n,s)}return n}function a(e,t,r){return jQuery(document.createElement("span")).addClass("error").attr("title",r).text(L10n.get("errorTitle")+": "+(t||"unknown error")).appendTo(e),!1}function i(e,t){var r=i;switch("undefined"==typeof e?"undefined":_typeof(e)){case"number":if(Number.isNaN(e))return t;break;case"object":if(null===e)return t;if(Array.isArray(e))return e.map(function(e){return r(e,t)}).join(", ");if(e instanceof Set)return[].concat(_toConsumableArray(e)).map(function(e){return r(e,t)}).join(", ");if(e instanceof Map){var n=[].concat(_toConsumableArray(e)).map(function(e){return r(e[0],t)+" ⇒ "+r(e[1],t)}).join("; ");return"( "+n+" )"}return e instanceof Date?e.toLocaleString():"function"==typeof e.toString?e.toString():Object.prototype.toString.call(e);case"function":case"undefined":return t}return String(e)}return Object.freeze(Object.defineProperties({},{clone:{value:e},convertBreaks:{value:t},safeActiveElement:{value:r},setPageElement:{value:n},throwError:{value:a},toStringOrDefault:{value:i}}))}(),clone=_ref3.clone,convertBreaks=_ref3.convertBreaks,safeActiveElement=_ref3.safeActiveElement,setPageElement=_ref3.setPageElement,throwError=_ref3.throwError,toStringOrDefault=_ref3.toStringOrDefault;!function(){function e(e){13!==e.which&&32!==e.which||(e.preventDefault(),jQuery(safeActiveElement()||this).trigger("click"))}function t(e){return function(){var t=jQuery(this);t.is("[aria-pressed]")&&t.attr("aria-pressed","true"===t.attr("aria-pressed")?"false":"true"),e.apply(this,arguments)}}function r(e){return t(function(){jQuery(this).off(".aria-clickable").removeAttr("tabindex aria-controls aria-pressed").not("a,button").removeAttr("role").end().filter("button").prop("disabled",!0),e.apply(this,arguments)})}jQuery.fn.extend({ariaClick:function(n,a){if(0===this.length||0===arguments.length)return this;var i=n,o=a;return null==o&&(o=i,i=undefined),i=jQuery.extend({namespace:undefined,one:!1,selector:undefined,data:undefined,controls:undefined,pressed:undefined,label:undefined},i),"string"!=typeof i.namespace?i.namespace="":"."!==i.namespace[0]&&(i.namespace="."+i.namespace),"boolean"==typeof i.pressed&&(i.pressed=i.pressed?"true":"false"),this.filter("button").prop("type","button"),this.not("a,button").attr("role","button"),this.attr("tabindex",0),null!=i.controls&&this.attr("aria-controls",i.controls),null!=i.pressed&&this.attr("aria-pressed",i.pressed),null!=i.label&&this.attr({"aria-label":i.label,title:i.label}),this.not("button").on("keypress.aria-clickable"+i.namespace,i.selector,e),this.on("click.aria-clickable"+i.namespace,i.selector,i.data,i.one?r(o):t(o)),this}})}(),function(){jQuery.extend({wikiWithOptions:function(e){for(var t=arguments.length,r=Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(0!==r.length){var a=document.createDocumentFragment();r.forEach(function(t){return new Wikifier(a,t,e)});var i=[].concat(_toConsumableArray(a.querySelectorAll(".error"))).map(function(e){return e.textContent.replace(/^(?:(?:Uncaught\s+)?Error:\s+)+/,"")});if(i.length>0)throw new Error(i.join("; "))}},wiki:function(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];this.wikiWithOptions.apply(this,[undefined].concat(t))}}),jQuery.fn.extend({wikiWithOptions:function(e){for(var t=arguments.length,r=Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(0===this.length||0===r.length)return this;var a=document.createDocumentFragment();return r.forEach(function(t){return new Wikifier(a,t,e)}),this.append(a),this},wiki:function(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return this.wikiWithOptions.apply(this,[undefined].concat(t))}})}();var Util=function(){function e(e){return Object.freeze(Object.assign(Object.create(null),e))}function t(e){return Object.prototype.toString.call(e).slice(8,-1)}function r(e){var t=void 0;switch("undefined"==typeof e?"undefined":_typeof(e)){case"number":t=e;break;case"string":t=Number(e);break;default:return!1}return!Number.isNaN(t)&&Number.isFinite(t)}function n(e){return"boolean"==typeof e||"string"==typeof e&&("true"===e||"false"===e)}function a(e){return String(e).trim().replace(/[^\w\s\u2013\u2014-]+/g,"").replace(/[_\s\u2013\u2014-]+/g,"-").toLocaleLowerCase()}function i(e){if(null==e)return"";var t=String(e);return t&&h.test(t)?t.replace(p,function(e){return g[e]}):t}function o(e){if(null==e)return"";var t=String(e);return t&&y.test(t)?t.replace(m,function(e){return v[e.toLowerCase()]}):t}function s(e,t){var r=String(e),n=Math.trunc(t),a=r.charCodeAt(n);if(Number.isNaN(a))return{char:"",start:-1,end:-1};var i={char:r.charAt(n),start:n,end:n};if(a<55296||a>57343)return i;if(a>=55296&&a<=56319){var o=n+1;if(o>=r.length)return i;var s=r.charCodeAt(o);return s<56320||s>57343?i:(i.char=i.char+r.charAt(o),i.end=o,i)}if(0===n)return i;var u=n-1,l=r.charCodeAt(u);return l<55296||l>56319?i:(i.char=r.charAt(u)+i.char,i.start=u,i)}function u(){return(Has.performance?performance:Date).now()}function l(e){var t=/^([+-]?(?:\d*\.)?\d+)([Mm]?[Ss])$/,r=t.exec(String(e));if(null===r)throw new SyntaxError('invalid time value syntax: "'+e+'"');var n=Number(r[1]);if(/^[Ss]$/.test(r[2])&&(n*=1e3),Number.isNaN(n)||!Number.isFinite(n))throw new RangeError('invalid time value: "'+e+'"');return n}function c(e){if("number"!=typeof e||Number.isNaN(e)||!Number.isFinite(e)){var t=void 0;switch("undefined"==typeof e?"undefined":_typeof(e)){case"string":t='"'+e+'"';break;case"number":t=String(e);break;default:t=Object.prototype.toString.call(e)}throw new Error("invalid milliseconds: "+t)}return e+"ms"}function d(e){if(!e.includes("-"))switch(e){case"bgcolor":return"backgroundColor";case"float":return"cssFloat";default:return e}var t="-ms-"===e.slice(0,4)?e.slice(1):e;return t.split("-").map(function(e,t){return 0===t?e:e.toUpperFirst()}).join("")}function f(e){var t=document.createElement("a"),r=Object.create(null);t.href=e,t.search&&t.search.replace(/^\?/,"").splitOrEmpty(/(?:&(?:amp;)?|;)/).forEach(function(e){var t=e.split("="),n=_slicedToArray(t,2),a=n[0],i=n[1];r[a]=i});var n=t.host&&"/"!==t.pathname[0]?"/"+t.pathname:t.pathname;return{href:t.href,protocol:t.protocol,host:t.host,hostname:t.hostname,port:t.port,path:""+n+t.search,pathname:n,query:t.search,search:t.search,queries:r,searches:r,hash:t.hash}}var p=/[&<>"'`]/g,h=new RegExp(p.source),g=Object.freeze({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","`":"&#96;"}),m=/&(?:amp|#38|#x26|lt|#60|#x3c|gt|#62|#x3e|quot|#34|#x22|apos|#39|#x27|#96|#x60);/gi,y=new RegExp(m.source,"i"),v=Object.freeze({"&amp;":"&","&#38;":"&","&#x26;":"&","&lt;":"<","&#60;":"<","&#x3c;":"<","&gt;":">","&#62;":">","&#x3e;":">","&quot;":'"',"&#34;":'"',"&#x22;":'"',"&apos;":"'","&#39;":"'","&#x27;":"'","&#96;":"`","&#x60;":"`"});return Object.freeze(Object.defineProperties({},{toEnum:{value:e},toStringTag:{value:t},isNumeric:{value:r},isBoolean:{value:n},slugify:{value:a},escape:{value:i},unescape:{value:o},charAndPosAt:{value:s},fromCssTime:{value:l},toCssTime:{value:c},fromCssProperty:{value:d},parseUrl:{value:f},now:{value:u},random:{value:Math.random},entityEncode:{value:i},entityDecode:{value:o},evalExpression:{value:function(){return Scripting.evalJavaScript.apply(Scripting,arguments)}},evalStatements:{value:function(){return Scripting.evalJavaScript.apply(Scripting,arguments)}}}))}(),SimpleAudio=function(){function e(){return g}function t(e){g=!!e,l("mute",g)}function r(){return p}function n(e){p=Math.clamp(e,.2,5),l("rate",p)}function a(){return h}function i(e){h=Math.clamp(e,0,1),l("volume",h)}function o(){l("stop")}function s(e,t){if("function"!=typeof t)throw new Error("callback parameter must be a function");f.set(e,t)}function u(e){f.delete(e)}function l(e,t){f.forEach(function(r){return r(e,t)})}function c(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return new(Function.prototype.bind.apply(m,[null].concat(t)))}function d(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return new(Function.prototype.bind.apply(y,[null].concat(t)))}var f=new Map,p=1,h=1,g=!1,m=function(){function e(t){if(_classCallCheck(this,e),Array.isArray(t))this._create(t);else{if(!(t instanceof e))throw new Error("sources parameter must be an array of either URLs or source objects");this._copy(t)}}return _createClass(e,[{key:"_create",value:function(t){if(!Array.isArray(t)||0===t.length)throw new Error("sources parameter must be an array of either URLs or source objects");var r=/^data:\s*audio\/([^;,]+)\s*[;,]/i,n=/\.([^.\/\\]+)$/,a=e.getType,i=[],o=document.createElement("audio");if(t.forEach(function(e){var t=null;switch("undefined"==typeof e?"undefined":_typeof(e)){case"string":var s=void 0;if("data:"===e.slice(0,5)){if(s=r.exec(e),null===s)throw new Error("source data URI missing media type")}else if(s=n.exec(Util.parseUrl(e).pathname),null===s)throw new Error("source URL missing file extension");var u=a(s[1]);null!==u&&(t={src:e,type:u});break;case"object":if(null===e)throw new Error("source object cannot be null");if(!e.hasOwnProperty("src"))throw new Error('source object missing required "src" property');
