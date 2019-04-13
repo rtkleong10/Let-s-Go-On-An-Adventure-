@@ -1,0 +1,2 @@
+# Let's Go On An Adventure
+This is a multimedia project I made for my HZ9101 Introduction to Creative Writing class in NTU. You can see the final product at https://rtkleong10.github.io/Let-s-Go-On-An-Adventure-/.
