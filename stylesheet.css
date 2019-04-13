@@ -1,0 +1,124 @@
+body {
+	background: #FFFFFF;
+	font-family: Courier;
+	font-size: 20px;
+	color: #000000;
+}
+
+@media (max-width: 650px) {
+	body {
+		font-size: 16px;
+	}
+}
+
+h1 {
+	color: #FFFFFF;
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+a {
+	font-weight: 700;
+	color: #9da6c9;
+
+}
+
+a:hover {
+	text-decoration: none;
+	color: #2C4AC5;
+}
+
+.passage {
+	visibility: hidden;
+}
+
+.passage > * {
+	display: none;
+	visibility: visible;
+}
+
+.display {
+	display: initial;
+}
+
+
+.typewriting {
+	animation: blinkTextCursor 400ms infinite normal;
+	border-right: 2px solid #333;
+}
+
+@keyframes blinkTextCursor {
+	from {border-right-color: #333;}
+	to {border-right-color: transparent;}
+}
+
+.qrcode {
+	width: 50vh;
+	height: 30vh;
+	background-image: url(https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/qrcode.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.qrcode.display {
+	display: block;
+}
+
+.box {
+	border-radius: 10px;
+	padding: 10px;
+	color: #FFFFFF;
+	font-weight: 700;
+}
+
+.box.display {
+	display: block;
+}
+
+.achievement {
+	background-color: #39A8C6;
+}
+
+.quest {
+	background-color: #C43E3E;
+}
+
+.reward {
+	background-color: #D2B019;
+}
+
+.sign {
+	font-family: fantasy;
+	color: #000000;
+	background-color: #E5E3B5;
+	text-align: center;
+	border-radius: 0;
+	padding: 20px;
+}
+
+.arrow {
+	width: 100px;
+	height: 20px;
+	position: absolute;
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/arrow.png");
+	left: -100px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.arrow.display {
+	animation: shootAcross ease-in 500ms;
+}
+
+@keyframes shootAcross {
+	from {left: -100px;}
+	to {left: 100vw;}
+}
+
+.dark {
+	background-color: #000000;
+	color: #FFFFFF;
+}
