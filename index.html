@@ -119,14 +119,14 @@ h2 {
 }
 
 a {
-  font-weight: 700;
-    color: #9da6c9;
+	font-weight: 700;
+	color: #9da6c9;
 
 }
 
 a:hover {
 	text-decoration: none;
-  color: #2C4AC5;
+	color: #2C4AC5;
 }
 
 .passage {
@@ -147,68 +147,68 @@ a:hover {
 	animation: blinkTextCursor 400ms infinite normal;
 	border-right: 2px solid #333;
 }
-	
+
 @keyframes blinkTextCursor {
 	from {border-right-color: #333;}
 	to {border-right-color: transparent;}
 }
 
 .qrcode {
-  width: 50vh;
-  height: 30vh;
-  background-image: url(https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/qrcode.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+	width: 50vh;
+	height: 30vh;
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/qrcode.png");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .qrcode.display {
-  display: block;
+	display: block;
 }
 
 .box {
-  border-radius: 10px;
-  padding: 10px;
-  color: #FFFFFF;
+	border-radius: 10px;
+	padding: 10px;
+	color: #FFFFFF;
 	font-weight: 700;
 }
 
 .box.display {
-  display: block;
+	display: block;
 }
 
 .achievement {
-  background-color: #39A8C6;
+	background-color: #39A8C6;
 }
 
 .quest {
-  background-color: #C43E3E;
+	background-color: #C43E3E;
 }
 
 .reward {
-  background-color: #D2B019;
+	background-color: #D2B019;
 }
 
 .sign {
-  font-family: fantasy;
-  color: #000000;
-  background-color: #E5E3B5;
-  text-align: center;
-  border-radius: 0;
-  padding: 20px;
+	font-family: fantasy;
+	color: #000000;
+	background-color: #E5E3B5;
+	text-align: center;
+	border-radius: 0;
+	padding: 20px;
 }
 
 .arrow {
-  width: 100px;
-  height: 20px;
-  position: absolute;
-  background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/arrow.png");
-  left: -100px;
-  background-size: contain;
-  background-repeat: no-repeat;
+	width: 100px;
+	height: 20px;
+	position: absolute;
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/arrow.png");
+	left: -100px;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .arrow.display {
-    animation: shootAcross ease-in 500ms;
+	animation: shootAcross ease-in 500ms;
 }
 
 @keyframes shootAcross {
@@ -217,17 +217,15 @@ a:hover {
 }
 
 @media (max-width: 650px) {
-  body {
-	font-size: 16px;
-  }
+	body {
+		font-size: 16px;
+	}
 }
 
 .dark {
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">// require jQuery
+	background-color: #000000;
+	color: #FFFFFF;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// require jQuery
 
 function addNodes(nodes, i = 0) {
 
@@ -289,11 +287,11 @@ function addSource(elem, path) {
 }
 
 var hoverBeep = $("<audio id='hover-beep'/>");
-addSource(hoverBeep, 'http://soundimage.org/wp-content/uploads/2016/04/UI_Quirky29.mp3');
+addSource(hoverBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/sound/UI_Quirky29.mp3');
 hoverBeep.appendTo("body");
 
 var clickBeep = $("<audio id='click-beep'/>");
-addSource(clickBeep, 'http://soundimage.org/wp-content/uploads/2016/04/UI_Quirky19.mp3');
+addSource(clickBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/sound/UI_Quirky19.mp3');
 clickBeep.appendTo("body");
 
 // Load Screen Slowly
@@ -358,8 +356,7 @@ $(document).click(function(e) {
 		for (let i = 0; i < typingNodes.length; i++)
 			typingNodes[i].classList.remove("typewriting");
 	}
-});
-</script><tw-passagedata pid="1" name="Title" tags="" position="100,600" size="100,100">&lt;h2&gt;Let’s Go On An Adventure!&lt;/h2&gt;
+});</script><tw-passagedata pid="1" name="Title" tags="" position="100,600" size="100,100">&lt;h2&gt;Let’s Go On An Adventure!&lt;/h2&gt;
 
 [[Start|Class Selection]]
 
@@ -593,7 +590,7 @@ Sorry, I didn’t prepare a prize or anything. But here have an imaginary cookie
 Well, you can always try again.
 
 [[&gt; Try again|Title]]
-&lt;&lt;link &quot;&gt; Exit”&gt;&gt;&lt;&lt;script&gt;&gt;window.close()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Warrior" tags="" position="400,300" size="100,100">So, you want to be a warrior, huh? According to the Great Warrior Bob, to become a warrior you must pass his test. You must pull out a sword from the Stone of Strength.
+&lt;&lt;link &quot;&gt; Exit&quot;&gt;&gt;&lt;&lt;script&gt;&gt;window.close()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Warrior" tags="" position="400,300" size="100,100">So, you want to be a warrior, huh? According to the Great Warrior Bob, to become a warrior you must pass his test. You must pull out a sword from the Stone of Strength.
 
 You turn to see a queue of a few thousand ripped adventurers waiting to try.
 
