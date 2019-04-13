@@ -5,12 +5,6 @@ body {
 	color: #000000;
 }
 
-@media (max-width: 650px) {
-	body {
-		font-size: 16px;
-	}
-}
-
 h1 {
 	color: #FFFFFF;
 }
@@ -58,7 +52,7 @@ a:hover {
 .qrcode {
 	width: 50vh;
 	height: 30vh;
-	background-image: url(https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/qrcode.png);
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/qrcode.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -103,7 +97,7 @@ a:hover {
 	width: 100px;
 	height: 20px;
 	position: absolute;
-	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/Assets/arrow.png");
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/arrow.png");
 	left: -100px;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -116,6 +110,12 @@ a:hover {
 @keyframes shootAcross {
 	from {left: -100px;}
 	to {left: 100vw;}
+}
+
+@media (max-width: 650px) {
+	body {
+		font-size: 16px;
+	}
 }
 
 .dark {
