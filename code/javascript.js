@@ -89,7 +89,9 @@ $(document).on(':passagedisplay', function() {
 	.mouseenter(function() {
 
 		var currentAudio = $("#hover-beep" + $(this).data("hover-beep"))[0];
-		currentAudio.play();
+		currentAudio.play().catch(() =>{
+			console.log("Uncaught promise");
+		});
 		currentAudio.currentTime = 0;
 	});
 });
@@ -97,7 +99,9 @@ $(document).on(':passagedisplay', function() {
 $(document).on(':passageend', function() {
 
 	var currentAudio = $("#click-beep")[0];
-	currentAudio.play();
+	currentAudio.play().catch(() =>{
+		console.log("Uncaught promise");
+	});
 	currentAudio.currentTime = 0;
 });
 
