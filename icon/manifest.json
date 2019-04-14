@@ -1,5 +1,6 @@
 {
- "name": "App",
+ "short_name": "LGOAA",
+  "name": "Let's Go On An Adventure!",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
