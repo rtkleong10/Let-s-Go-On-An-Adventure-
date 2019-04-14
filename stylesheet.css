@@ -20,7 +20,7 @@ a {
 
 }
 
-a:hover {
+a:hover, a:active {
 	text-decoration: none;
 	color: #2C4AC5;
 }
@@ -49,16 +49,23 @@ a:hover {
 	to {border-right-color: transparent;}
 }
 
-.qrcode {
+.img {
 	width: 50vh;
 	height: 30vh;
-	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/qrcode.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 }
 
-.qrcode.display {
+.img.display {
 	display: block;
+}
+
+.qrcode {
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/qrcode.png");
+}
+
+.cookie {
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/cookie.jpg");
 }
 
 .box {
