@@ -60,11 +60,11 @@ function addSource(elem, path) {
 }
 
 var hoverBeep = $("<audio id='hover-beep'/>");
-addSource(hoverBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/sound/UI_Quirky29.mp3');
+addSource(hoverBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/audio/UI_Quirky29.mp3');
 hoverBeep.appendTo("body");
 
 var clickBeep = $("<audio id='click-beep'/>");
-addSource(clickBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/sound/UI_Quirky19.mp3');
+addSource(clickBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/audio/UI_Quirky19.mp3');
 clickBeep.appendTo("body");
 
 // Load Screen Slowly

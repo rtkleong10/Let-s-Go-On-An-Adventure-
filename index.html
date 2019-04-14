@@ -102,7 +102,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<div id="store-area" hidden><tw-storydata name="Let&#39;s Go On An Adventure!" startnode="1" creator="Twine" creator-version="2.2.1" ifid="3DC93C6C-DB97-413F-A1DB-D97B84381722" zoom="1" format="SugarCube" format-version="2.21.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">body {
+	<div id="store-area" hidden><tw-storydata name="Let&#39;s Go On An Adventure!" startnode="1" creator="Twine" creator-version="2.2.1" ifid="3DC93C6C-DB97-413F-A1DB-D97B84381722" zoom="0.6" format="SugarCube" format-version="2.21.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">body {
 	background: #FFFFFF;
 	font-family: Courier;
 	font-size: 20px;
@@ -294,11 +294,11 @@ function addSource(elem, path) {
 }
 
 var hoverBeep = $("<audio id='hover-beep'/>");
-addSource(hoverBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/sound/UI_Quirky29.mp3');
+addSource(hoverBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/audio/UI_Quirky29.mp3');
 hoverBeep.appendTo("body");
 
 var clickBeep = $("<audio id='click-beep'/>");
-addSource(clickBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/sound/UI_Quirky19.mp3');
+addSource(clickBeep, 'https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/audio/UI_Quirky19.mp3');
 clickBeep.appendTo("body");
 
 // Load Screen Slowly
