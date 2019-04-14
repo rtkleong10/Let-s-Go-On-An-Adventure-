@@ -124,7 +124,7 @@ a {
 
 }
 
-a:hover {
+a:hover, a:active {
 	text-decoration: none;
 	color: #2C4AC5;
 }
@@ -153,16 +153,23 @@ a:hover {
 	to {border-right-color: transparent;}
 }
 
-.qrcode {
+.img {
 	width: 50vh;
 	height: 30vh;
-	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/qrcode.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 }
 
-.qrcode.display {
+.img.display {
 	display: block;
+}
+
+.qrcode {
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/qrcode.png");
+}
+
+.cookie {
+	background-image: url("https://raw.githubusercontent.com/rtkleong10/Let-s-Go-On-An-Adventure-/master/img/cookie.jpg");
 }
 
 .box {
@@ -358,9 +365,9 @@ $(document).click(function(e) {
 	}
 });</script><tw-passagedata pid="1" name="Title" tags="" position="100,600" size="100,100">&lt;h2&gt;Let’s Go On An Adventure!&lt;/h2&gt;
 
-[[Start|Class Selection]]
+[[&gt; Start|Class Selection]]
 
-&lt;div class=&quot;qrcode&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;img qrcode&quot;&gt;&lt;/div&gt;
 
 &lt;&lt;set $HAS_PEN to false&gt;&gt;
 &lt;&lt;set $TOOK_QUEST to false&gt;&gt;
@@ -377,16 +384,15 @@ Please select a class.
 &lt;&lt;/if&gt;&gt;&lt;&lt;if not $TRIED_MAGE&gt;&gt;[[&gt; Mage|Mage]]
 &lt;&lt;/if&gt;&gt;&lt;&lt;if not $TRIED_THIEF&gt;&gt;[[&gt; Thief|Thief]]
 &lt;&lt;/if&gt;&gt;&lt;&lt;if not $TRIED_ARCHER&gt;&gt;[[&gt; Archer|Archer]]
-&lt;&lt;/if&gt;&gt;[[&gt; Peasant-&gt;Peasant]]</tw-passagedata><tw-passagedata pid="3" name="Given Weapon" tags="" position="550,900" size="100,100">Welcome, young peasant! There’s a lot in store for you on this journey.
+&lt;&lt;/if&gt;&gt;[[&gt; Peasant-&gt;Peasant]]</tw-passagedata><tw-passagedata pid="3" name="Given Weapon" tags="" position="550,900" size="100,100">Ah, here. An old lady in the city needs some help. She’ll accept any adventurer. That could be you!
 
-Here’s your weapon.
+Okay, here’s your weapon.
 
 &lt;div class=&quot;box achievement&quot;&gt;Achievement Unlocked: Obtain a weapon&lt;/div&gt;
-You look down at your palm to see a pen.
+You look down to see a pen materialise in your palm.
 
 [[&gt; “Wow, a pen! I can’t wait to um… write?”|Accept Pen]]
-[[&gt; “You call this a weapon?”|Refuse Pen]]
-</tw-passagedata><tw-passagedata pid="4" name="Accept Pen" tags="" position="700,825" size="100,100">Glad you like it! It’s a 0.5 black gel pen I got on sale for $0.50. I mean, this is a $5,000 fountain pen. Its chassis is made of refined glass and its ink was harvested from the finest veltish squids.
+[[&gt; “You call this a weapon?”|Refuse Pen]]</tw-passagedata><tw-passagedata pid="4" name="Accept Pen" tags="" position="700,825" size="100,100">Glad you like it! It’s a 0.5 black gel pen I got on sale for $0.50. I mean, this is a $5,000 fountain pen. Its chassis is made of refined glass and its ink was harvested from the finest veltish squids.
 
 [[&gt; “Cool!”|Ready]]
 &lt;&lt;set $HAS_PEN to true&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Refuse Pen" tags="" position="700,975" size="100,100">Rude, much? It’s the only thing we could get you on such short notice. If you hate it so much, then I’ll just have to take it back.
@@ -470,7 +476,7 @@ But there’s one spot where the light manages to shine through. It illuminates 
 ADVENTURERS BEWARE&lt;/div&gt;
 You begin to hear branches crack in the distance.
 
-[[&gt; “Who’s there?”|Meet the Slimes]]</tw-passagedata><tw-passagedata pid="19" name="Meet the Slimes" tags="dark" position="3100,600" size="100,100">A slimes hops into view. He seems excited to see you as he starts moving quickly towards you.
+[[&gt; “Who’s there?”|Meet the Slimes]]</tw-passagedata><tw-passagedata pid="19" name="Meet the Slimes" tags="dark" position="3100,600" size="100,100">A slime hops into view. He seems excited to see you as he starts moving quickly towards you.
 
 SLIME: “Young adventurer, please listen to me.”
 
@@ -486,7 +492,7 @@ You punch the slime one more time for good measure. It dies and drops EXP.
 [[&gt; Next|Attack the Slimes 2]]</tw-passagedata><tw-passagedata pid="21" name="Listen to the Slimes 1" tags="dark" position="3250,750" size="100,100">SLIME: “We’ve been cursed. We were once adventurers just like you. But when we tried to help the old lady, she cursed us and turned us into slimes. Please, young adventurer, we need your help to undo her curse.”
 
 [[&gt; “I’ll help you.”|Listen to the Slimes 2]]
-[[&gt; “Well, that’s a you problem.”|Ignore the Slimes]]</tw-passagedata><tw-passagedata pid="22" name="Attack the Slimes 2" tags="dark" position="3400,450" size="100,100">From behind the trees, more slimes hop into sight. They look horrified at the sight of their fellow slime reduced to goo on the forest floor.
+[[&gt; “Well, that’s a you problem.”|Ignore the Slimes]]</tw-passagedata><tw-passagedata pid="22" name="Attack the Slimes 2" tags="dark" position="3400,450" size="100,100">From behind the trees, more slimes hop into sight. They look horrified at the sight of their fallen fellow slime.
 
 A young slime with a bow on her head hops forward and stares at you, mouth agape in horror.
 
@@ -494,8 +500,8 @@ SLIME WITH BOW: “Why did you kill my brother?”
 
 She cries before running back to what appears to be her mother.
 
-[[&gt; Attack them all|Attack the Slimes 3]]
-[[&gt; Stop|Try to Stop]]</tw-passagedata><tw-passagedata pid="23" name="Complete Quest 1" tags="" position="3700,450" size="100,100">Suddenly, you teleport back to the city. You look down to see the old lady in front of you.
+[[&gt; “It’s kill or be killed!”|Attack the Slimes 3]]
+[[&gt; “I’m so sorry, miss.”|Try to Stop]]</tw-passagedata><tw-passagedata pid="23" name="Complete Quest 1" tags="" position="3700,450" size="100,100">The old lady seems a bit shocked to see you return so soon.
 
 OLD LADY:	“Wow, good job for a peasant.”
 
@@ -516,22 +522,22 @@ You hurry towards the source of the sound. You end up in front of a small cottag
 
 [[&gt; “Hello? Are you all right?”|Open the Door]]</tw-passagedata><tw-passagedata pid="26" name="Wander Off to the City" tags="dark" position="3400,600" size="100,100">Somehow, you find yourself back in the city.
 
-[[&gt; Next|Come Back]]
+[[&gt; “Wait, what?”|Come Back]]
 &lt;&lt;set $HELPED_SLIMES to false&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Listen to the Slimes 2" tags="dark" position="3400,750" size="100,100">SLIME: “Thank you, kind soul. But be warned, she has ears throughout the kingdom. I’m afraid she might even be listening to us as we spea-”
 
 Suddenly, the slime disappears and you find yourself back in the city.
 
-[[&gt; Next|Come Back]]
+[[&gt; &quot;Wait, what?&quot;|Come Back]]
 &lt;&lt;set $HELPED_SLIMES to true&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Open the Door" tags="" position="4300,600" size="100,100">The door creaks open, revealing the old lady with a twisted grin.
 
 OLD LADY: “Ah, young adventurer. Care to join us?”
 
 She opens the door further to reveal ARCHER MARK suspended over a steaming cauldron. He’s screaming at the top of his lungs.
 
-You try to run away, but your body is paralysed. You hear the door shut behind you.
+You try to run away, but your body is paralysed under her spell. You hear the door shut behind you.
 
 &lt;&lt;if $HELPED_SLIMES&gt;&gt;[[&gt; Next|Saved by Slimes 1]]
-&lt;&lt;else&gt;&gt;[[&gt; Next|ARCHER MARK Dies]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Saved by Slimes 1" tags="" position="4450,525" size="100,100">She waves her wand, compelling your body to walk forward towards the cauldron. You close your eyes and begin to brace yourself for the worst.
+&lt;&lt;else&gt;&gt;[[&gt; Next|ARCHER MARK Dies]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Saved by Slimes 1" tags="" position="4450,525" size="100,100">She waves her hand, compelling your body to walk forward towards the cauldron. You close your eyes and begin to brace yourself for the worst.
 
 All of sudden, the windows shatter. The witch’s spell weakens for a moment, allowing you to turn around.
 
@@ -541,7 +547,7 @@ It’s the slimes. They’ve come to save you.
 
 He falls into the cauldron. After a few seconds, a slime hops out of the cauldron and out the door.
 
-The witch smiles, satisfied. She turns to you.
+The witch smiles, satisfied, before turning to face you.
 
 OLD LADY: “Hmm, I didn’t mean to turn you so soon. But I guess it can’t be helped.”
 
@@ -561,17 +567,19 @@ You turn to see ARCHER MARK back on his feet after being freed by the slimes.
 &lt;&lt;if $AGGRAVATE_MARK&gt;&gt;[[&gt; Next|Killed by Mark]]
 &lt;&lt;else&gt;&gt;[[&gt; Next|Befriend Mark]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Punch the Witch" tags="" position="4750,625" size="100,100">You try to punch the witch. But your peasant punches are no match for the witch. She doesn’t even flinch.
 
-She casts a freezing spell at everyone in the room. She begins to turn to you with a wry smile on her lips
+She casts a freezing spell at everyone in the room. She begins to turn to you with a tight-lipped smile on her lips.
 
-[[&gt; Next|Die in the Cauldron]]</tw-passagedata><tw-passagedata pid="34" name="Die in the Cauldron" tags="" position="4600,725" size="100,100">She lifts you up with a spell and drops you into the cauldron. You feel your body slowly morph into a slime.
+[[&gt; Next|Die in the Cauldron]]</tw-passagedata><tw-passagedata pid="34" name="Die in the Cauldron" tags="" position="4600,725" size="100,100">She lifts you up with a spell and drops you into the cauldron. You feel your skin bubble as your body slowly morphs into a slime.
 
-You wait for her to let you out, but she doesn’t.
+Painstakingly, you wait for her to let you out, but she doesn’t.
 
 She leaves you to burn.
 
-[[&gt; The End|Death]]</tw-passagedata><tw-passagedata pid="35" name="Killed by Mark" tags="" position="4900,375" size="100,100">He punches you in the face. Then, he picks up an arrow and stabs you through the heart.
+[[&gt; The End|Death]]</tw-passagedata><tw-passagedata pid="35" name="Killed by Mark" tags="" position="4900,375" size="100,100">Before you can react, he punches you in the face.
 
 ARCHER MARK: “Stupid peasant.”
+
+Even as an archer, his punch was strong enough to knock you out.
 
 [[&gt; The End|Death]]</tw-passagedata><tw-passagedata pid="36" name="Befriend Mark" tags="" position="4900,525" size="100,100">He holds out his hand to you. You hesitate before shaking it.
 
@@ -581,11 +589,13 @@ ARCHER MARK: “You’re not so bad for a peasant.”
 
 Oh my god, did you actually survive? Wow, um, congratulations!
 
-Sorry, I didn’t prepare a prize or anything. But here have an imaginary cookie.
+Sorry, I didn’t prepare a prize or anything. But, here, have an imaginary cookie.
 
-&lt;&lt;link &quot;&gt; Exit&quot;&gt;&gt;&lt;&lt;script&gt;&gt;window.close()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Death" tags="dark" position="5200,700" size="100,100">Wow, that was sad. RIP, bro.
+&lt;div class=&quot;img cookie&quot;&gt;&lt;/div&gt;
+&lt;&lt;link &quot;&gt; Exit&quot;&gt;&gt;&lt;&lt;script&gt;&gt;window.close()&lt;&lt;/script&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Death" tags="dark" position="5200,700" size="100,100">&#39;&#39;Game Over&#39;&#39;
+Wow, that was sad. RIP, bro.
 
-&lt;&lt;if not $TOOK_QUEST&gt;&gt;Maybe, you should’ve been nicer to innocent old ladies, huh?&lt;&lt;elseif not $HELPED_SLIMES&gt;&gt;Maybe, you should’ve listened to those poor innocent slimes, huh?&lt;&lt;elseif not $HAS_PEN&gt;&gt;Maybe, you might want to accept weapons when people give them to you, huh?&lt;&lt;elseif $AGGRAVATE_MARK&gt;&gt;Maybe, you might want to avoid insulting people who are much stronger than you, huh?&lt;&lt;/if&gt;&gt;
+&lt;&lt;if not $TOOK_QUEST&gt;&gt;Maybe, you shouldn’t have underestimated old ladies, huh?&lt;&lt;elseif not $HELPED_SLIMES&gt;&gt;Maybe, you should’ve listened to those poor innocent slimes, huh?&lt;&lt;elseif not $HAS_PEN&gt;&gt;Maybe, you might want to accept weapons when people give them to you, huh?&lt;&lt;elseif $AGGRAVATE_MARK&gt;&gt;Maybe, you might want to avoid insulting people who are much stronger than you, huh?&lt;&lt;/if&gt;&gt;
 
 Well, you can always try again.
 
@@ -605,7 +615,7 @@ You can wait here and I’ll let you know when it’s your turn. Otherwise, you 
 [[&gt; Back|Class Selection]]
 &lt;&lt;set $TRIED_WARRIOR to true&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Mage" tags="" position="400,450" size="100,100">So, you’d like to become a master of the magical arts? Well, first you’ll have to see if the magic chooses you.
 
-Place your hands the mystical orb.
+Place your hands on the mystical orb.
 
 ...
 
@@ -620,7 +630,7 @@ Here you g-
 
 A thief runs from the shadows and snatches the knife before it drops into your hands.
 
-Well, that was out last knife. Looks like you’ve got to pick something else.
+Well, that was our last knife. Looks like you’ve got to pick something else.
 
 [[&gt; Back|Class Selection]]
 &lt;&lt;set $TRIED_THIEF to true&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Archer" tags="" position="400,750" size="100,100">Wow, this is embarrassing.
@@ -642,7 +652,7 @@ Saving the princess... but must be handsome...
 
 Finding the cure for cancer...
 
-[[&gt; 5 minutes later|Given Weapon]]</tw-passagedata><tw-passagedata pid="44" name="Reach the City" tags="" position="1900,550" size="100,100">When you finally make it past the gates of the city, you collapse and lay on the ground for a solid minute.
+[[&gt; 5 minutes later|Given Weapon]]</tw-passagedata><tw-passagedata pid="44" name="Reach the City" tags="" position="1900,550" size="100,100">When you finally make it past the gates of the city, you collapse and lay down on the ground to rest for a minute.
 
 Or maybe five?
 
