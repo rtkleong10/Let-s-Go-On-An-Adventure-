@@ -240,15 +240,19 @@ a:hover, a:active {
 	to {left: 100vw;}
 }
 
+.dark {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+
 @media (max-width: 650px) {
 	body {
 		font-size: 16px;
 	}
-}
 
-.dark {
-	background-color: #000000;
-	color: #FFFFFF;
+	.arrow.display {
+		animation: shootAcross ease-in 300ms;
+	}
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">// require jQuery
 
 function addNodes(nodes, i = 0) {
@@ -385,6 +389,7 @@ $(document).click(function(e) {
 			typingNodes[i].classList.remove("typewriting");
 	}
 });
+
 </script><tw-passagedata pid="1" name="Title" tags="" position="100,600" size="100,100">&lt;h2&gt;Let’s Go On An Adventure!&lt;/h2&gt;
 
 [[&gt; Start|Class Selection]]
